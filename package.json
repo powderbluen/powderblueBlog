@@ -1,0 +1,24 @@
+{
+  "name": "PowderBlue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "杰尼龟",
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
+    "vuepress": "^1.9.7",
+    "vuepress-plugin-copyright": "^1.0.2",
+    "vuepress-plugin-cursor-effects": "^1.1.4",
+    "": "^0.3.2"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress-plugin-posts-encrypt": "^0.0.6",
+    "vuepress-plugin-sakura": "^1.2.1",
+    "vuepress-theme-melodydl": "^1.1.2",
+    "vuepress-theme-reco": "^1.6.14"
+  }
+}

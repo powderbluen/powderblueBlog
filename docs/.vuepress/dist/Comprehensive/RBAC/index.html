@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>动态路由是怎么实现的？或者 权限控制怎么做 | 杰尼龟的知识空间</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/powderblueBlog/assets/css/0.styles.17348205.css" as="style"><link rel="preload" href="/powderblueBlog/assets/js/app.79abdad2.js" as="script"><link rel="preload" href="/powderblueBlog/assets/js/2.a2f218dc.js" as="script"><link rel="preload" href="/powderblueBlog/assets/js/9.737f6472.js" as="script"><link rel="prefetch" href="/powderblueBlog/assets/js/10.0ab88e72.js"><link rel="prefetch" href="/powderblueBlog/assets/js/11.95764ad6.js"><link rel="prefetch" href="/powderblueBlog/assets/js/12.7953ce97.js"><link rel="prefetch" href="/powderblueBlog/assets/js/13.4c782cc5.js"><link rel="prefetch" href="/powderblueBlog/assets/js/14.60e34d90.js"><link rel="prefetch" href="/powderblueBlog/assets/js/15.2849b53c.js"><link rel="prefetch" href="/powderblueBlog/assets/js/16.5fa0b3f6.js"><link rel="prefetch" href="/powderblueBlog/assets/js/17.599efe6c.js"><link rel="prefetch" href="/powderblueBlog/assets/js/3.59880b52.js"><link rel="prefetch" href="/powderblueBlog/assets/js/4.2a9537eb.js"><link rel="prefetch" href="/powderblueBlog/assets/js/5.e5513792.js"><link rel="prefetch" href="/powderblueBlog/assets/js/6.8dcd4e8f.js"><link rel="prefetch" href="/powderblueBlog/assets/js/7.3180cc23.js"><link rel="prefetch" href="/powderblueBlog/assets/js/8.a82ed3c9.js">
+    <link rel="stylesheet" href="/powderblueBlog/assets/css/0.styles.17348205.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/powderblueBlog/" class="home-link router-link-active"><!----> <span class="site-name">杰尼龟的知识空间</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/powderblueBlog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端三剑客" class="dropdown-title"><span class="title">前端三剑客</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端三剑客" class="mobile-dropdown-title"><span class="title">前端三剑客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/HTMLandCSS-Topic/" class="nav-link">
+  HTMLandCSS
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/JavaScript-Topic/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/LESSandSCSS/" class="nav-link">
+  LESSandSCSS
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/vue-know/" class="nav-link">
+  Vue2基础面视题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/vue-hard/" class="nav-link">
+  Vue难点面视题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/Vue3/" class="nav-link">
+  Vue3
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="综合" class="dropdown-title"><span class="title">综合</span> <span class="arrow down"></span></button> <button type="button" aria-label="综合" class="mobile-dropdown-title"><span class="title">综合</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/CommonTopic/" class="nav-link">
+  常见面试题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/Rendering/" class="nav-link">
+  常见面试题2
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/RBAC/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  权限控制怎么做
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/ProjectExperience/" class="nav-link">
+  项目经验
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/powderblueBlog/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端三剑客" class="dropdown-title"><span class="title">前端三剑客</span> <span class="arrow down"></span></button> <button type="button" aria-label="前端三剑客" class="mobile-dropdown-title"><span class="title">前端三剑客</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/HTMLandCSS-Topic/" class="nav-link">
+  HTMLandCSS
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/JavaScript-Topic/" class="nav-link">
+  JavaScript
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/ThreeSwordsman/LESSandSCSS/" class="nav-link">
+  LESSandSCSS
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/vue-know/" class="nav-link">
+  Vue2基础面视题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/vue-hard/" class="nav-link">
+  Vue难点面视题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/vue/Vue3/" class="nav-link">
+  Vue3
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="综合" class="dropdown-title"><span class="title">综合</span> <span class="arrow down"></span></button> <button type="button" aria-label="综合" class="mobile-dropdown-title"><span class="title">综合</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/CommonTopic/" class="nav-link">
+  常见面试题
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/Rendering/" class="nav-link">
+  常见面试题2
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/RBAC/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  权限控制怎么做
+</a></li><li class="dropdown-item"><!----> <a href="/powderblueBlog/Comprehensive/ProjectExperience/" class="nav-link">
+  项目经验
+</a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="动态路由是怎么实现的-或者-权限控制怎么做"><a href="#动态路由是怎么实现的-或者-权限控制怎么做" class="header-anchor">#</a> 动态路由是怎么实现的？或者 权限控制怎么做</h2> <h4 id="权限控制分为三大块"><a href="#权限控制分为三大块" class="header-anchor">#</a> 权限控制分为三大块</h4> <ol><li>路由权限：
+<ul><li>效果：用户只能看到自己有权限访问的页面，如果访问不是自己有权限的页面就是 404，不同权限的账号看到的页面不一样</li> <li>实现思路：前端路由维护了两份路由表(静态路由表，就是所有的用户都能看到的，直接在路由实列 router 上面挂载；还有一份动态路由表要根据用户当前权限动态筛选 addRoutes 添加上去)</li></ul></li> <li>菜单权限：
+<ul><li>效果：左侧侧边栏导航是 v-for 动态渲染出来 有的用户能看到所有菜单，有的用户只能看到部分</li> <li>实现思路：菜单是根据当前用户自己的路由表 v-for 动态渲染出来的</li></ul></li> <li>按钮权限：
+<ul><li>效果：某个页面上有新增 删除 修改按钮 有的账号可以操作所有功能 有的账号只能操作新增功能(一种思路是 disabled 一中是隐藏)</li> <li>实现思路：登陆成功会后台返回一份权限点列表，里面记录了各个页面上面的按钮能不能操作的标识，可以定义一个 minxin 混入，在里面定义一个方法，用于判断当前这个页面上某个按钮的权限点是不是再权限点列表中，如果是这个按钮就启用或者显示，如果不是就禁用或者隐藏</li></ul></li></ol></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><div class="Sakura" data-v-248d85d6><canvas id="canvas_sakura" style="z-index:9999;" data-v-248d85d6></canvas></div><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="https://assets.smallsunnyfox.com/music/2.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:30px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="https://assets.smallsunnyfox.com/music/2.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(https://assets.smallsunnyfox.com/music/2.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>강남역 4번 출구</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>Plastic / Fallin` Dild</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div><canvas id="vuepress-canvas-cursor"></canvas></div></div>
+    <script src="/powderblueBlog/assets/js/app.79abdad2.js" defer></script><script src="/powderblueBlog/assets/js/2.a2f218dc.js" defer></script><script src="/powderblueBlog/assets/js/9.737f6472.js" defer></script>
+  </body>
+</html>
